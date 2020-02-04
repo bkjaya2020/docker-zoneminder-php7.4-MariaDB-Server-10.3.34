@@ -60,4 +60,12 @@ Then edit your timezone
 
 <code>exit</code>
 
+(Note:- Each time , you start the container ,you will have to run " sudo docker exec -t -i zm /bin/bash" after "sudo docker start zm" to get the ZM Console)
+
+(To use msmtp for emailing please refer https://hub.docker.com/repository/docker/bkjaya1952/docker-zoneminder-master)
+
+( The procedure of composing an image can be obtained from the following links
+
+https://bkjaya.wordpress.com/2020/01/15/how-to-build-a-zoneminder-master-docker-image-with-mysql-8-msmtp/ )
+
 
