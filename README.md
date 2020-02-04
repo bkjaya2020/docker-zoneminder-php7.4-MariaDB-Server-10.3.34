@@ -5,7 +5,7 @@ This image has been created on ubuntu:eoan with zoneminder-master/ubuntu eoan ma
 To pull the Repository from the dockerhub
 please refer the following link
 
-https://hub.docker.com/r/bkjaya1952/docker-zoneminder-master-mysql8
+https://hub.docker.com/r/bkjaya1952/docker-zoneminder-master-php7.4-mysql8
 
 
 Usage :
