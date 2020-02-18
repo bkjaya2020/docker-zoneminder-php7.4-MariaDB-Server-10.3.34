@@ -24,12 +24,15 @@ RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys ABE4C7F993453843F0A
 
 RUN apt update && apt install -y msmtp \
     && apt install -y tzdata \
-    && apt install -y supervisor
+    && apt install -y supervisor \
+    && apt install -y vim
+    
 
 
 
 # Install zoneminder
-RUN apt install --assume-yes zoneminder 
+RUN apt install --assume-yes zoneminder \
+    && apt -y autoremove 
 
 RUN rm /etc/mysql/my.cnf
 
