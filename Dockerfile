@@ -31,14 +31,13 @@ RUN apt update && apt install -y msmtp \
 
 
 # Install zoneminder
-RUN apt install --assume-yes zoneminder \
-    && apt -y autoremove 
+RUN apt install --assume-yes zoneminder
+ 
 
 RUN rm /etc/mysql/my.cnf
-
-RUN cp /etc/mysql/mysql.conf.d/mysqld.cnf /etc/mysql/my.cnf \
-    && sed -i "15i default_authentication_plugin= mysql_native_password" /etc/mysql/my.cnf \
-    && service mysql restart
+RUN cp /etc/mysql/mysql.conf.d/mysqld.cnf /etc/mysql/my.cnf 
+RUN sed -i "15i default_authentication_plugin= mysql_native_password" /etc/mysql/my.cnf
+RUN service mysql restart
 ADD supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
  
