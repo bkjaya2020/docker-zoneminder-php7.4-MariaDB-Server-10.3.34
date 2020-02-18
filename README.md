@@ -47,7 +47,7 @@ Then edit your timezone in the system
 
 Then edit your time zone at /etc/php/7.4/apache2/php.ini
 
-vim  apache2/php.ini
+vim  /etc/php/7.4/apache2/php.ini
 
 press <Insert> key of key board and 
 
