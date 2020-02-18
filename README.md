@@ -43,7 +43,18 @@ Make changes as follows)
 
 <code>dpkg-reconfigure tzdata</code>
 
-Then edit your timezone
+Then edit your timezone in the system
+
+Then edit your time zone at /etc/php/7.4/apache2/php.ini
+
+vim  apache2/php.ini
+
+press <Insert> key of key board and 
+
+At line number 961 input your date.timezone =  ( ie. Asia/Colombo )
+
+Then press <Esc> key & input ( x: ) to save and quit
+
 
 <code>exit</code>
 
