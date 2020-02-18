@@ -14,9 +14,9 @@ ARG DEBIAN_FRONTEND=noninteractive
  
 RUN apt install -y software-properties-common  
 RUN add-apt-repository ppa:ondrej/php \
- && apt update \
- && apt -y install php7.4 \
- && apt install -y mysql-server
+ && apt update
+RUN apt -y install php7.4
+RUN apt install -y mysql-server
 # Configure Zoneminder PPA
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys ABE4C7F993453843F0AEB8154D0BF748776FFB04 \
     && echo deb http://ppa.launchpad.net/iconnor/zoneminder-master/ubuntu eoan main  > /etc/apt/sources.list.d/zoneminder.list \
