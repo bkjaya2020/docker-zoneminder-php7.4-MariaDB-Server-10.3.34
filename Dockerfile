@@ -23,7 +23,9 @@ RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys ABE4C7F993453843F0A
     && apt update
 
 RUN apt update && apt install -y msmtp \
-    && apt install -y tzdata
+    && apt install -y tzdata \
+    && apt install -y supervisor
+
 
 
 # Install zoneminder
@@ -34,6 +36,7 @@ RUN rm /etc/mysql/my.cnf
 RUN cp /etc/mysql/mysql.conf.d/mysqld.cnf /etc/mysql/my.cnf \
     && sed -i "15i default_authentication_plugin= mysql_native_password" /etc/mysql/my.cnf \
     && service mysql restart
+ADD supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
  
 # Set our volumes before we attempt to configure apache
@@ -49,13 +52,12 @@ RUN chmod 740 /etc/zm/zm.conf \
     && chown -R www-data:www-data /usr/share/zoneminder/ \
     && ln -s /usr/bin/msmtp /usr/sbin/sendmail \
     && sed -i "228i ServerName localhost" /etc/apache2/apache2.conf \
-    && chown -R www-data:www-data /var/run/zm \
-    && /etc/init.d/apache2 start
+    && chown -R www-data:www-data /var/run/zm
+RUN chmod 777 /var/run/zm
+RUN /etc/init.d/apache2 start
+
 # Expose http port
 EXPOSE 80
-
-COPY entrypoint.sh /entrypoint.sh
-COPY bash.bashrc /etc/bash.bashrc
-COPY apache2.conf /etc/apache2/apache2.conf
-RUN chmod 777 /entrypoint.sh 
-ENTRYPOINT ["/entrypoint.sh"]
+COPY startzm.sh /usr/bin/startzm.sh
+RUN chmod 777 /usr/bin/startzm.sh
+CMD ["/usr/bin/supervisord"]
