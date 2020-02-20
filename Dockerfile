@@ -62,3 +62,6 @@ RUN /etc/init.d/apache2 start
 
 # Expose http port
 EXPOSE 80
+COPY startzm.sh /usr/bin/startzm.sh
+RUN chmod 777 /usr/bin/startzm.sh
+CMD ["/usr/bin/supervisord"]
