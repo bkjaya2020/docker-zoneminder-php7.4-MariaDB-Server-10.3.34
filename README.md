@@ -74,6 +74,8 @@ On the Ubuntu terminal enter
 
 <code>zmupdate.pl</code>
 
+<code>apt autoclean</code>
+
 <code>exit</code>
 
 
