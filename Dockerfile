@@ -54,6 +54,8 @@ RUN adduser www-data video
 RUN a2enmod cgi
 RUN a2enconf zoneminder
 RUN a2enmod rewrite
+RUN a2enmod headers
+RUN a2enmod expires
 RUN chown -R www-data:www-data /usr/share/zoneminder/
 RUN ln -s /usr/bin/msmtp /usr/sbin/sendmail
 RUN sed -i "228i ServerName localhost" /etc/apache2/apache2.conf
