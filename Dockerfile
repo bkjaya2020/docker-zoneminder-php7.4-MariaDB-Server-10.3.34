@@ -16,7 +16,11 @@ RUN apt install -y software-properties-common
 RUN add-apt-repository ppa:ondrej/php \
  && apt update
 RUN apt -y install php7.4
-RUN apt install -y mysql-server
+
+RUN apt update \
+    && apt install -y mysql-server 
+ 
+
 # Configure Zoneminder PPA
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys ABE4C7F993453843F0AEB8154D0BF748776FFB04 \
     && echo deb http://ppa.launchpad.net/iconnor/zoneminder-master/ubuntu eoan main  > /etc/apt/sources.list.d/zoneminder.list \
@@ -25,38 +29,36 @@ RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys ABE4C7F993453843F0A
 RUN apt update && apt install -y msmtp \
     && apt install -y tzdata \
     && apt install -y supervisor 
-    
+   
 
 # Install zoneminder
-RUN apt install --assume-yes zoneminder
- 
+RUN apt install --assume-yes zoneminder 
 
 RUN rm /etc/mysql/my.cnf
-RUN cp /etc/mysql/mysql.conf.d/mysqld.cnf /etc/mysql/my.cnf 
+
+RUN cp /etc/mysql/mysql.conf.d/mysqld.cnf /etc/mysql/my.cnf
 RUN sed -i "15i default_authentication_plugin= mysql_native_password" /etc/mysql/my.cnf
 RUN service mysql restart
-ADD supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
+ADD supervisord.conf /etc/supervisor/conf.d/supervisord.conf
  
 # Set our volumes before we attempt to configure apache
 VOLUME /var/cache/zoneminder/events /var/lib/mysql /var/log/zm /var/run/zm
 
 
-RUN chmod 740 /etc/zm/zm.conf \
-    && chown root:www-data /etc/zm/zm.conf \
-    && adduser www-data video \
-    && a2enmod cgi \
-    && a2enconf zoneminder \
-    && a2enmod rewrite \
-    && chown -R www-data:www-data /usr/share/zoneminder/ \
-    && ln -s /usr/bin/msmtp /usr/sbin/sendmail \
-    && chown -R www-data:www-data /var/run/zm
-    
+RUN chmod 740 /etc/zm/zm.conf
+RUN chown root:www-data /etc/zm/zm.conf
+RUN adduser www-data video
+RUN a2enmod cgi
+RUN a2enconf zoneminder
+RUN a2enmod rewrite
+RUN chown -R www-data:www-data /usr/share/zoneminder/
+RUN ln -s /usr/bin/msmtp /usr/sbin/sendmail
+RUN sed -i "228i ServerName localhost" /etc/apache2/apache2.conf
+RUN chown -R www-data:www-data /var/run/zm
 RUN chmod 777 /var/run/zm
 RUN /etc/init.d/apache2 start
 
+
 # Expose http port
 EXPOSE 80
-COPY startzm.sh /usr/bin/startzm.sh
-RUN chmod 777 /usr/bin/startzm.sh
-CMD ["/usr/bin/supervisord"]
