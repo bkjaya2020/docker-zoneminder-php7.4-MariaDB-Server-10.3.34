@@ -62,5 +62,18 @@ Then edit your time zone at /etc/php/7.4/apache2/php.ini
 
 https://bkjaya.wordpress.com/2020/01/15/how-to-build-a-zoneminder-master-docker-image-with-mysql-8-msmtp/  )
 
+On the Ubuntu terminal enter
+
+<code>sudo docker exec -t -i zm /bin/bash</code>
+
+<code>add-apt-repository ppa:iconnor/zoneminder-master</code>
+
+<code>apt upgrade zoneminder</code>
+
+<code>zmupdate.pl</code>
+
+<code>exit</code>
+
+
 
 
