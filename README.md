@@ -47,13 +47,7 @@ Then edit your timezone in the system
 
 Then edit your time zone at /etc/php/7.4/apache2/php.ini
 
-vim  /etc/php/7.4/apache2/php.ini
-
-press <Insert> key of key board and 
-
-At line number 961 input your date.timezone =  ( ie. Asia/Colombo )
-
-Then press <Esc> key & input ( x: ) to save and quit
+<code>sed -i "961i date.timezone = Asia/Colombo" /etc/php/7.4/apache2/php.ini</code>        ( ie. Asia/Colombo )
 
 
 <code>exit</code>
