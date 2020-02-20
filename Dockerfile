@@ -1,3 +1,5 @@
+# Zoneminder-1.34 ,docker images with php 7.4 ,Mysql 8 & MSMTP
+# After making a docker container ,Zoneminder-1.34 can be upgraded to Zoneminder-master 1.35
 FROM ubuntu:eoan
 MAINTAINER B.K.Jayasundera
 
@@ -22,8 +24,7 @@ RUN apt update \
  
 
 # Configure Zoneminder PPA
-RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys ABE4C7F993453843F0AEB8154D0BF748776FFB04 \
-    && echo deb http://ppa.launchpad.net/iconnor/zoneminder-master/ubuntu eoan main  > /etc/apt/sources.list.d/zoneminder.list \
+RUN add-apt-repository ppa:iconnor/zoneminder-1.34 \ 
     && apt update 
     
 
@@ -66,3 +67,4 @@ EXPOSE 80
 COPY startzm.sh /usr/bin/startzm.sh
 RUN chmod 777 /usr/bin/startzm.sh
 CMD ["/usr/bin/supervisord"]
+
