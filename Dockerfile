@@ -4,43 +4,27 @@ FROM ubuntu:eoan
 MAINTAINER B.K.Jayasundera
 
 # Update base packages
-RUN apt update \
-    && apt upgrade --assume-yes
+RUN apt update && \
+    apt upgrade --assume-yes
 
 # Install pre-reqs
-RUN apt install -y gnupg
-RUN apt update \
-    && apt-get -y --no-install-recommends install
+RUN apt update && \
+    apt-get -y --no-install-recommends install
      
 ARG DEBIAN_FRONTEND=noninteractive
  
 RUN apt install -y software-properties-common  
-RUN add-apt-repository ppa:ondrej/php \
- && apt update
-RUN apt -y install php7.4
+RUN add-apt-repository ppa:ondrej/php && \
+    add-apt-repository ppa:iconnor/zoneminder-master && \
+    apt update && \
+    apt -y install gnupg php7.4 mysql-server msmtp tzdata supervisor zoneminder && \ 
+    rm -rf /var/lib/apt/lists/* && \ 
+    apt -y autoremove
 
-RUN apt update \
-    && apt install -y mysql-server 
- 
-
-# Configure Zoneminder PPA
-RUN add-apt-repository ppa:iconnor/zoneminder-1.34 \ 
-    && apt update 
-    
-
-RUN apt update && apt install -y msmtp \
-    && apt install -y tzdata \
-    && apt install -y supervisor 
-   
-
-# Install zoneminder
-RUN apt install --assume-yes zoneminder 
-
-RUN rm /etc/mysql/my.cnf
-
-RUN cp /etc/mysql/mysql.conf.d/mysqld.cnf /etc/mysql/my.cnf
-RUN sed -i "15i default_authentication_plugin= mysql_native_password" /etc/mysql/my.cnf
-RUN service mysql restart
+RUN rm /etc/mysql/my.cnf && \
+    cp /etc/mysql/mysql.conf.d/mysqld.cnf /etc/mysql/my.cnf && \
+    sed -i "15i default_authentication_plugin= mysql_native_password" /etc/mysql/my.cnf && \
+    service mysql restart
 
 ADD supervisord.conf /etc/supervisor/conf.d/supervisord.conf
  
@@ -48,20 +32,20 @@ ADD supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 VOLUME /var/cache/zoneminder/events /var/lib/mysql /var/log/zm /var/run/zm
 
 
-RUN chmod 740 /etc/zm/zm.conf
-RUN chown root:www-data /etc/zm/zm.conf
-RUN adduser www-data video
-RUN a2enmod cgi
-RUN a2enconf zoneminder
-RUN a2enmod rewrite
-RUN a2enmod headers
-RUN a2enmod expires
-RUN chown -R www-data:www-data /usr/share/zoneminder/
-RUN ln -s /usr/bin/msmtp /usr/sbin/sendmail
-RUN sed -i "228i ServerName localhost" /etc/apache2/apache2.conf
-RUN chown -R www-data:www-data /var/run/zm
-RUN chmod 777 /var/run/zm
-RUN /etc/init.d/apache2 start
+RUN chmod 740 /etc/zm/zm.conf && \
+    chown root:www-data /etc/zm/zm.conf && \
+    adduser www-data video && \
+    a2enmod cgi && \
+    a2enconf zoneminder && \
+    a2enmod rewrite && \
+    a2enmod headers && \
+    a2enmod expires && \
+    chown -R www-data:www-data /usr/share/zoneminder/ && \
+    ln -s /usr/bin/msmtp /usr/sbin/sendmail && \
+    sed -i "228i ServerName localhost" /etc/apache2/apache2.conf && \
+    chown -R www-data:www-data /var/run/zm && \
+    chmod 777 /var/run/zm && \
+    /etc/init.d/apache2 start
 
 
 # Expose http port
