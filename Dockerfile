@@ -1,4 +1,4 @@
-# Zoneminder-1.34 ,docker images with php 7.4 ,Mysql 8 & MSMTP
+# Zoneminder-master ,docker images with php 7.4 ,Mysql 8 & MSMTP
 # After making a docker container ,Zoneminder-1.34 can be upgraded to Zoneminder-master 1.35
 FROM ubuntu:eoan
 MAINTAINER B.K.Jayasundera
