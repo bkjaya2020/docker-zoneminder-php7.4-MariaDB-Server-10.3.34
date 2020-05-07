@@ -1,7 +1,7 @@
 # Zoneminder-master ,docker images with php 7.4 ,Mysql 8 & MSMTP
 
 FROM ubuntu:eoan
-MAINTAINER B.K.Jayasundera
+MAINTAINER B.K.Jay
 
 # Update base packages
 RUN apt update && \
