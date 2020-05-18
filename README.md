@@ -14,7 +14,7 @@ To create a zoneminder-1.34 docker container (name zm)with php 7.4 ,mysql 8 & ms
 
 On the Ubuntu terminal enter the following commands
 
-<code>sudo docker create -t -p 8080:80 --shm-size=4096m --name zm --privileged=true bkjaya1952/docker-zoneminder-master-php7.4-mysql8:latest</code>
+<code>sudo docker create -t -p 8080:80 --shm-size=4096m --name zm --privileged=true bkjaya1952/docker-zoneminder-php7.4-mysql8:1.34</code>
 
 <code>sudo docker start zm</code>
 
@@ -78,7 +78,7 @@ https://bkjaya.wordpress.com/2020/01/15/how-to-build-a-zoneminder-master-docker-
 
 # Note:- If you want your docker container zm to detect ip camera automatically, you will have to use the following command when creating the container .
 
-<code>sudo docker create -t -p 80:80 --shm-size=4096m --name zm --network=host --privileged=true bkjaya1952/docker-zoneminder-master-php7.4-mysql8:latest</code>
+<code>sudo docker create -t -p 80:80 --shm-size=4096m --name zm --network=host --privileged=true bkjaya1952/bkjaya1952/docker-zoneminder-php7.4-mysql8:1.34</code>
 
 In this case you will have to restrain in using the port 80 in your host for any other purpose when running the zm container.
 
