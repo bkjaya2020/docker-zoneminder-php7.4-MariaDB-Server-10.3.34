@@ -1,7 +1,7 @@
-# docker-zoneminder-master-php7.4-mysql8-latest
-Zoneminder-master-latest ,docker images with php 7.4 ,Mysql 8 &amp; MSMTP
+# docker-zoneminder-1.34-php7.4-mysql8-latest
+zoneminder-1.34 ,docker images with php 7.4 ,Mysql 8 &amp; MSMTP
 
-This image has been created on ubuntu:eoan with zoneminder-master/ubuntu eoan main
+This image has been created on ubuntu:focal with zoneminder-1.34/ubuntu focal main
 To pull the Repository from the dockerhub
 please refer the following link
 
@@ -10,7 +10,7 @@ https://hub.docker.com/r/bkjaya1952/docker-zoneminder-master-php7.4-mysql8
 
 Usage :
 
-To create a Zonminder-master docker container (name zm)with php 7.4 ,mysql 8 & msmtp
+To create a zoneminder-1.34 docker container (name zm)with php 7.4 ,mysql 8 & msmtp
 
 On the Ubuntu terminal enter the following commands
 
