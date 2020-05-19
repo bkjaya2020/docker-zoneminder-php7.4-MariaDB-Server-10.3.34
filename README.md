@@ -5,7 +5,7 @@ This image has been created on ubuntu:focal with zoneminder-1.34/ubuntu focal ma
 To pull the Repository from the dockerhub
 please refer the following link
 
-https://hub.docker.com/r/bkjaya1952/docker-zoneminder-master-php7.4-mysql8
+https://hub.docker.com/repository/docker/bkjaya1952/docker-zoneminder-php7.4-mysql8
 
 
 Usage :
