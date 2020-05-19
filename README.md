@@ -59,6 +59,10 @@ Configuring Mysql and Changing  root password)
 
 Then edit your timezone in the system
 
+<code>dpkg-reconfigure tzdata</code>
+
+Then edit your timezone
+
 Then edit your time zone at /etc/php/7.4/apache2/php.ini
 
 <code>sed -i "961i date.timezone = Asia/Colombo" /etc/php/7.4/apache2/php.ini</code>        ( ie. Asia/Colombo )
