@@ -30,7 +30,6 @@ RUN chmod 740 /etc/zm/zm.conf && \
     a2enmod rewrite && \
     a2enmod headers && \
     a2enmod expires && \
-    chown -R www-data:www-data /usr/share/zoneminder/ && \
     ln -s /usr/bin/msmtp /usr/sbin/sendmail && \
     sed -i "228i ServerName localhost" /etc/apache2/apache2.conf && \
     chown -R www-data:www-data /var/run/zm && \
