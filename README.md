@@ -1,7 +1,7 @@
 # docker-zoneminder-php7.4-mysql8
 zoneminder-1.34.19 ,docker images with php 7.4 ,Mysql 8 &amp; MSMTP
 
-This image has been created on ubuntu:focal with zoneminder-1.34.18/ubuntu focal main
+This image has been created on ubuntu:focal with zoneminder-1.34.19/ubuntu focal main
 To pull the Repository from the dockerhub
 please refer the following link
 
