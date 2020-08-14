@@ -6,6 +6,8 @@ RUN apt update && \
     apt upgrade --assume-yes
 
 ARG DEBIAN_FRONTEND=noninteractive
+COPY zoneminder_1.34.16-focal1_amd64.deb /zoneminder_1.34.16-focal1_amd64.deb
+
 
 RUN apt install -y software-properties-common  
 RUN add-apt-repository ppa:iconnor/zoneminder-1.34 && \
@@ -36,7 +38,10 @@ RUN chmod 740 /etc/zm/zm.conf && \
     sed -i "228i ServerName localhost" /etc/apache2/apache2.conf && \
     chown -R www-data:www-data /var/run/zm && \
     chmod 777 /var/run/zm && \
-    /etc/init.d/apache2 start
+    /etc/init.d/apache2 start \
+    dpkg -i zoneminder_1.34.16-focal1_amd64.deb \
+    zmupdate.pl
+    
 
 
 # Expose http port
