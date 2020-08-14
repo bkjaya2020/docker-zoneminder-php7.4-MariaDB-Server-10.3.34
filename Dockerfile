@@ -12,7 +12,7 @@ COPY zoneminder_1.34.16-focal1_amd64.deb /zoneminder_1.34.16-focal1_amd64.deb
 RUN apt install -y software-properties-common  
 RUN dpkg -i zoneminder_1.34.16-focal1_amd64.deb && \
     apt update && \
-    apt -y install gnupg msmtp tzdata supervisor zoneminder && \ 
+    apt -y install gnupg msmtp tzdata supervisor && \ 
     rm -rf /var/lib/apt/lists/* && \ 
     apt -y autoremove && \
     rm /etc/mysql/my.cnf && \
