@@ -1,5 +1,5 @@
 # docker-zoneminder-php7.4-mysql8
-zoneminder-1.34.21 ,docker images with php 7.4 ,Mysql 8 &amp; MSMTP
+zoneminder-latest ,docker images with php 7.4 ,Mysql 8 &amp; MSMTP
 Based on Iconnor's Zoneminder 
 This image has been created on ubuntu:focal with zoneminder-1.34.21/ubuntu focal main
 To pull the Repository from the dockerhub
@@ -10,11 +10,11 @@ https://hub.docker.com/repository/docker/bkjaya1952/docker-zoneminder-php7.4-mys
 
 Usage :
 
-To create a zoneminder-1.34 docker container (name zm)with php 7.4 ,mysql 8 & msmtp
+To create a zoneminder- docker container (name zm)with php 7.4 ,mysql 8 & msmtp
 
 On the Ubuntu terminal enter the following commands
 
-<code>sudo docker create -t -p 8080:80 --shm-size=4096m --name zm --privileged=true bkjaya1952/docker-zoneminder-php7.4-mysql8:1.34.21</code>
+<code>sudo docker create -t -p 8080:80 --shm-size=4096m --name zm --privileged=true bkjaya1952/docker-zoneminder-php7.4-mysql8:latest</code>
 
 <code>sudo docker start zm</code>
 
@@ -82,7 +82,7 @@ https://bkjaya.wordpress.com/2020/01/15/how-to-build-a-zoneminder-master-docker-
 
 # Note:- If you want your docker container zm to detect ip camera automatically, you will have to use the following command when creating the container .
 
-<code>sudo docker create -t -p 80:80 --shm-size=4096m --name zm --network=host --privileged=true bkjaya1952/docker-zoneminder-php7.4-mysql8:1.34.21</code>
+<code>sudo docker create -t -p 80:80 --shm-size=4096m --name zm --network=host --privileged=true bkjaya1952/docker-zoneminder-php7.4-mysql8:latest</code>
 
 In this case you will have to restrain in using the port 80 in your host for any other purpose when running the zm container.
 
