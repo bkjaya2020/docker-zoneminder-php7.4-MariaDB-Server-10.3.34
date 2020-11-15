@@ -26,46 +26,19 @@ On the Ubuntu terminal enter the following commands
 
 Make changes as follows)
 
+(Configuring Mysql )
 
-Configuring Mysql and Changing  root password)
+<code>firstrun.sh</code>
 
-<code>mysql</code>
-
-<code>ALTER USER 'root'@'localhost' IDENTIFIED BY 'yourpassword';</code>
-
-
-<code>FLUSH PRIVILEGES ;</code>
-
-<code>quit</code>
-
-(Creating zm sql data base)
-
-<code>mysql -uroot -p < /usr/share/zoneminder/db/zm_create.sql</code>
-
-<code>mysql</code>
-
-<code>CREATE USER 'zmuser'@localhost IDENTIFIED BY 'zmpass';</code>
-
-(If CREATE does not work try with ALTER )
-
-<code>GRANT ALL PRIVILEGES ON zm.* TO 'zmuser'@'localhost' WITH GRANT OPTION;</code>
-
-<code>FLUSH PRIVILEGES ;</code>
-
-<code>quit</code>
-
-<code>mysqladmin -uroot -p reload</code>
-
-
-Then edit your timezone in the system
-
-<code>dpkg-reconfigure tzdata</code>
+The press Enter Key when password prompts apear twice
 
 Then edit your timezone
 
-Then edit your time zone at /etc/php/7.4/apache2/php.ini
+Enter your  timezone details when prompts apear
 
-<code>sed -i "961i date.timezone = Asia/Colombo" /etc/php/7.4/apache2/php.ini</code>        ( ie. Asia/Colombo )
+<code>exit</code>
+
+<code>sudo docker restart zm</code>
 
 
 <code>exit</code>
