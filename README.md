@@ -40,11 +40,6 @@ Enter your  timezone details when prompts apear
 
 <code>sudo docker restart zm</code>
 
-
-<code>exit</code>
-
-<code>sudo docker restart zm</code>
-
 <code>http://localhost:8080/zm/</code>
 
 (To use msmtp for emailing please refer https://hub.docker.com/repository/docker/bkjaya1952/docker-zoneminder-master)
