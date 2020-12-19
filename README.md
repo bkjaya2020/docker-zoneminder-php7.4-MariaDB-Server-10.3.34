@@ -30,7 +30,7 @@ Make changes as follows)
 
 <code>firstrun.sh</code>
 
-The press Enter Key when password prompts apear twice
+The press Enter Key when password prompt apear 
 
 Then edit your timezone
 
