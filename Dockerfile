@@ -47,6 +47,8 @@ RUN chmod 740 /etc/zm/zm.conf && \
 EXPOSE 80
 COPY startzm.sh /usr/bin/startzm.sh
 COPY firstrun.sh /usr/bin/firstrun.sh
+COPY updatemysql.sh /usr/bin/updatemysql.sh
+RUN chmod 777 /usr/bin/updatemysql.sh
 RUN chmod 777 /usr/bin/startzm.sh
 RUN chmod 777 /usr/bin/firstrun.sh
 CMD ["/usr/bin/supervisord"]
