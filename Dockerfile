@@ -1,4 +1,4 @@
-FROM ubuntu:hirsute
+FROM ubuntu:focal 
 MAINTAINER B.K.Jayasundera
 
 # Update base packages
