@@ -12,7 +12,7 @@ ARG DEBIAN_FRONTEND=noninteractive
 RUN apt install -y software-properties-common  
 RUN add-apt-repository ppa:iconnor/zoneminder-1.36 && \
     apt update && \
-    apt -y install gnupg msmtp tzdata supervisor zoneminder && \ 
+    apt -y install mariadb-server gnupg msmtp tzdata supervisor zoneminder && \ 
     rm -rf /var/lib/apt/lists/* && \ 
     apt -y autoremove && \
     rm /etc/mysql/my.cnf && \
