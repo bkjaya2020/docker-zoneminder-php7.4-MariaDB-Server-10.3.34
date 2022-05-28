@@ -1,4 +1,4 @@
-# docker-zoneminder-php7.4-mysql8
+# docker-zoneminder-php7.4-MariaDB Server 10.3.34 
 zoneminder-latest ,docker images with php 7.4 ,MariaDB Server 10.3.34 &; MSMTP
 Based on Iconnor's Zoneminder 
 This image has been created on ubuntu:focal with zoneminder-latest/ubuntu focal1 main
