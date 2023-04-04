@@ -15,7 +15,7 @@ RUN add-apt-repository ppa:iconnor/zoneminder-1.36 && \
     apt -y install mariadb-server gnupg msmtp tzdata supervisor zoneminder && \ 
     rm -rf /var/lib/apt/lists/* && \ 
     apt -y autoremove && \
-    service mysql restart
+    /etc/init.d/mysql start
 
 
 ADD supervisord.conf /etc/supervisor/conf.d/supervisord.conf
